@@ -7,38 +7,11 @@ import {
 } from 'recharts';
 import { LayoutGrid, PieChart as PieChartIcon, TrendingUp, Compass, BookOpen, Settings, Zap, Trash2, Plus, Edit3, StickyNote, GripVertical } from 'lucide-react';
 
-const INITIAL_ASSETS = [
-  { id:'a1', name:'용욱 미국주식', owner:'용욱', category:'주식', principal:170000000, current:295846761 },
-  { id:'a2', name:'용욱 국내주식', owner:'용욱', category:'주식', principal:60000000, current:78201753 },
-  { id:'a3', name:'한나 미국주식', owner:'한나', category:'주식', principal:170000000, current:293952741 },
-  { id:'a4', name:'한나 국내주식', owner:'한나', category:'주식', principal:40000000, current:59541172 },
-  { id:'a5', name:'다올저축은행', owner:'공동', category:'현금성', principal:97403047, current:97403047 },
-  { id:'a6', name:'주택청약/적금', owner:'공동', category:'현금성', principal:19000000, current:19000000 },
-  { id:'a7', name:'전세금', owner:'공동', category:'부동산', principal:785000000, current:785000000 },
-  { id:'a8', name:'지역주택조합', owner:'공동', category:'부동산', principal:157200000, current:157200000 },
-  { id:'a9', name:'대출금', owner:'공동', category:'부채', principal:-140000000, current:-140000000 },
-  { id:'a10', name:'신한은행', owner:'공동', category:'현금성', principal:20000000, current:20000000 },
-  { id:'a11', name:'SK하이닉스 1주', owner:'공동', category:'기타', principal:1830000, current:1830000 },
-];
+const INITIAL_ASSETS = [];
 
-const INITIAL_PROJECTION = [
-  { year:2024, deposit:750000000, union:141200000, stock:270000000, loan:0, note:'' },
-  { year:2025, deposit:785000000, union:152200000, stock:564000000, loan:-140000000, note:'' },
-  { year:2026, deposit:785000000, union:164200000, stock:678400000, loan:-140000000, note:'소득저축: 7000 (수입 11500)' },
-  { year:2027, deposit:800000000, union:176200000, stock:1148740000, loan:-500000000, note:'소득저축: 3500 (수입 12500), 2027년부터 전세대출 5억 가정' },
-  { year:2028, deposit:800000000, union:188200000, stock:1296610000, loan:-500000000, note:'소득저축: 4500 (수입 13500)' },
-  { year:2029, deposit:800000000, union:200200000, stock:1464270000, loan:-500000000, note:'소득저축: 5000 (수입 14500)' },
-  { year:2030, deposit:800000000, union:212200000, stock:1648690000, loan:-500000000, note:'소득저축: 5000 (수입 14500)' },
-  { year:2031, deposit:0, union:1300000000, stock:1761550000, loan:-300000000, note:'지주택 성공 및 시세 13억 가정 / 주식 수익 연 10% 가정' },
-];
+const INITIAL_PROJECTION = [];
 
-const INITIAL_MONTHLY = [
-  { id:'m1', month:'2026-01', label:'1월', yongwookIncome:7344490, hannaIncome:3008854, expense:-4968898, stockGain:6479438, etc:-367752 },
-  { id:'m2', month:'2026-02', label:'2월', yongwookIncome:3585810, hannaIncome:2544514, expense:-4217162, stockGain:-29737885, etc:-7349459 },
-  { id:'m3', month:'2026-03', label:'3월', yongwookIncome:5470060, hannaIncome:9981497, expense:-6094012, stockGain:-43055334, etc:-536608 },
-  { id:'m4', month:'2026-04', label:'4월', yongwookIncome:16850950, hannaIncome:2624017, expense:-6870190, stockGain:125587528, etc:-387240 },
-  { id:'m5', month:'2026-05', label:'5월', yongwookIncome:5436310, hannaIncome:2635877, expense:-4587262, stockGain:116680319, etc:-882233 },
-];
+const INITIAL_MONTHLY = [];
 
 const FIRE_GOAL = 3000000000;
 const CATEGORY_COLORS = { '주식':'#3E7CB8', '부동산':'#3E9E8C', '현금성':'#D4AF6A', '기타':'#8C8378', '부채':'#C9645A' };
@@ -1595,7 +1568,7 @@ export default function App() {
   useEffect(() => {
     async function loadData() {
       try {
-        const snap = await getDoc(doc(db, 'data', 'main'));
+        const snap = await getDoc(doc(db, 'data', 'friend'));
         if (snap.exists()) {
           const d = snap.data();
           if (d.assets) setAssets(d.assets);
@@ -1618,7 +1591,7 @@ export default function App() {
     if (!loaded) return;
     const timer = setTimeout(async () => {
       try {
-        await setDoc(doc(db, 'data', 'main'), { assets, monthly, projection, notes, goal, cols, dashSummary, memos, rules });
+        await setDoc(doc(db, 'data', 'friend'), { assets, monthly, projection, notes, goal, cols, dashSummary, memos, rules });
       } catch(e) { console.error(e); }
     }, 1000);
     return () => clearTimeout(timer);
