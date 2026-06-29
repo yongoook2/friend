@@ -13,7 +13,7 @@ const INITIAL_PROJECTION = [];
 
 const INITIAL_MONTHLY = [];
 
-const FIRE_GOAL = 3000000000;
+const FIRE_GOAL = 0;
 const CATEGORY_COLORS = { '주식':'#3E7CB8', '부동산':'#3E9E8C', '현금성':'#D4AF6A', '기타':'#8C8378', '부채':'#C9645A' };
 const NAV_ITEMS = [
   { id:'dashboard', label:'Summary', sub:'전체 현황', icon:LayoutGrid },
@@ -1548,11 +1548,11 @@ export default function App() {
   const [notes, setNotes] = useState(INITIAL_PROJECTION.map(p => ({ year: p.year, note: p.note })));
   const [goal, setGoal] = useState(FIRE_GOAL);
   const [cols, setCols] = useState([
-    { key:'yongwookIncome', label:'용욱 소득' },
-    { key:'hannaIncome',    label:'한나 소득' },
+    { key:'yongwookIncome', label:'남편 소득' },
+    { key:'hannaIncome',    label:'아내 소득' },
     { key:'expense',        label:'지출' },
-    { key:'stockGain',      label:'주식수익' },
-    { key:'etc',            label:'기타비용' },
+    { key:'stockGain',      label:'주식 수익' },
+    { key:'etc',            label:'기타 비용' },
   ]);
   const [dashSummary, setDashSummary] = useState([
     { id:'s1', label:'소득', keys:['yongwookIncome','hannaIncome'] },
