@@ -1058,7 +1058,7 @@ function GrowthPage({ monthly, setMonthly, showSnack, cols, setCols, memos, setM
   const chartData = monthsOfYear.map(r => ({ label:r.label, total:r.total }));
   const maxVal = Math.max(...chartData.map(d => Math.abs(d.total)), 1);
   const maxLabel = Math.round(maxVal/10000).toLocaleString() + '만';
-  const yAxisWidth = maxLabel.length * 9 + 4;
+  const yAxisWidth = Math.max(maxLabel.length * 9 + 4, 48);
 
   return (
     <div style={{ display:'flex', flexDirection:'column', gap:18 }}>
