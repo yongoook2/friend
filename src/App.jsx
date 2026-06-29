@@ -857,10 +857,10 @@ function DashboardPage({ assets, monthly, projection, goal, setGoal, cols, dashS
         <SectionCard style={{ padding:'24px 28px' }}>
           <h3 style={{ margin:0, fontSize:16, fontWeight:700, marginBottom:14 }}>올해 저축 현황</h3>
           <div style={{ overflowX:'auto' }}>
-            <table style={{ fontSize:15.5 }}>
+            <table style={{ fontSize:15.5, width:'100%', tableLayout:'fixed' }}>
               <thead>
                 <tr style={{ color:'#8A8780', textAlign:'right', fontSize:14 }}>
-                  <th style={{ textAlign:'left', fontWeight:500, paddingBottom:8 }}>월</th>
+                  <th style={{ textAlign:'left', fontWeight:500, paddingBottom:8, width:'8%' }}>월</th>
                   {cols.map(c => <th key={c.key} style={{ fontWeight:500, paddingBottom:8 }}>{c.label}</th>)}
                   <th style={{ fontWeight:500, paddingBottom:8 }}>합계</th>
                 </tr>
