@@ -1311,9 +1311,9 @@ function ProjectionPage({ projection, setProjection, assets, showSnack, notes, s
   const [hoverRow, setHoverRow] = useState(null);
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [projCols, setProjCols] = useState([
-    { key:'deposit', label:'전세금' },
-    { key:'union',   label:'지역주택조합' },
-    { key:'stock',   label:'현금·주식' },
+    { key:'deposit', label:'부동산' },
+    { key:'union',   label:'현금' },
+    { key:'stock',   label:'주식' },
     { key:'loan',    label:'대출금' },
   ]);
   const [activeColMenu, setActiveColMenu] = useState(null);
